@@ -15,7 +15,7 @@ namespace BusinessManagementApp.Controllers
 
         public ActionResult Add()
         {
-            //_catalog.Id = 1;
+            _catalog.Code = "001";
             _catalog.Name = "B";
             _catalogManager.Add(_catalog);
             return View();
