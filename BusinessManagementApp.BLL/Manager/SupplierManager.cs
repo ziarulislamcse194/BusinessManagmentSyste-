@@ -23,6 +23,20 @@ namespace BusinessManagementApp.BLL.Manager
             return _supplierRepository.Edit(supplier);
         }
 
+        public List<Supplier> GetAll()
+        {
+            return _supplierRepository.GetAll();
+        }
+
+        public Supplier GetById(Supplier supplier)
+        {
+            return _supplierRepository.GetById(supplier);
+        }
+
+        public bool Delete(Supplier supplier)
+        {
+            return _supplierRepository.Delete(supplier);
+        }
 
     }
 }

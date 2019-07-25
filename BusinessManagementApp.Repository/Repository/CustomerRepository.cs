@@ -16,8 +16,8 @@ namespace BusinessManagementApp.Repository.Repository
         {
             db.Customers.Add(customer);
 
-            int saved = db.SaveChanges();
-            if (saved > 0)
+            int isExecuted = db.SaveChanges();
+            if (isExecuted > 0)
             {
                 return true;
             }
@@ -28,15 +28,48 @@ namespace BusinessManagementApp.Repository.Repository
         public bool Edit(Customer customer)
         {
             Customer aCustomer = db.Customers.FirstOrDefault(c => c.Id == customer.Id);
-            int saved = 0;
+            int isExecuted = 0;
 
             if (aCustomer != null)
             {
-                aCustomer.Name = aCustomer.Name;
-                saved = db.SaveChanges();
+                aCustomer.Code = customer.Code;
+                aCustomer.Name = customer.Name;
+                aCustomer.Address = customer.Address;
+                aCustomer.Email = customer.Email;
+                aCustomer.ContactNo = customer.ContactNo;
+                aCustomer.LoyaltyPoint = customer.LoyaltyPoint;
+                isExecuted = db.SaveChanges();
             }
 
-            if (saved > 0)
+            if (isExecuted > 0)
+            {
+                return true;
+            }
+
+            return false;
+        }
+
+
+        public List<Customer> GetAll()
+        {
+            return db.Customers.ToList();
+        }
+
+        public Customer GetById(Customer customer)
+        {
+            Customer aCustomer = db.Customers.FirstOrDefault(c => c.Id == customer.Id);
+            return aCustomer;
+        }
+
+        public bool Delete(Customer customer)
+        {
+            int isExecuted = 0;
+            Customer aCustomer = db.Customers.FirstOrDefault(c => c.Id == customer.Id);
+
+            db.Customers.Remove(aCustomer);
+            isExecuted = db.SaveChanges();
+
+            if (isExecuted > 0)
             {
                 return true;
             }

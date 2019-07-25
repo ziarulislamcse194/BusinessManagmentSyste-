@@ -13,24 +13,41 @@ namespace BusinessManagementApp.Controllers
         ProductManager _productManager = new ProductManager();
         Product _product = new Product();
 
-        public ActionResult Add()
+        public ActionResult Add(Product product)
         {
-            _product.Code = "001";
-            _product.Name = "A";
-            _product.ReorderLevel = 100;
-            _product.Description = "Dhaka 1200";
+            _product.Code = product.Code;
+            _product.Name = product.Name;
+            _product.Catagory = product.Catagory;
+            _product.ReorderLevel = product.ReorderLevel;
+            _product.Description = product.Description;
             _productManager.Add(_product);
             return View();
         }
 
-        public ActionResult Edit()
+        public ActionResult Edit(Product product)
         {
-            _product.Id = 2;
-            _product.Code = "001";
-            _product.Name = "A";
-            _product.ReorderLevel = 100;
-            _product.Description = "Dhaka 1200";
-            _productManager.Add(_product);
+            _product.Id = product.Id;
+
+            Product aProduct = _productManager.GetById(_product);
+
+            if (aProduct != null)
+            {
+                _product.Code = product.Code;
+                _product.Name = product.Name;
+                _product.Catagory = product.Catagory;
+                _product.ReorderLevel = product.ReorderLevel;
+                _product.Description = product.Description;
+                _productManager.Edit(_product);
+            }
+
+            
+            return View();
+        }
+
+        public ActionResult Delete(Product product)
+        {
+            _product.Id = product.Id;
+            _productManager.Delete(product);
             return View();
         }
 

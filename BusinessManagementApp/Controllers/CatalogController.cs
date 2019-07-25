@@ -13,19 +13,34 @@ namespace BusinessManagementApp.Controllers
         CatalogManager _catalogManager = new CatalogManager();
         Catalog _catalog = new Catalog();
 
-        public ActionResult Add()
+        public ActionResult Add(Catalog catalog)
         {
-            _catalog.Code = "001";
-            _catalog.Name = "B";
+            _catalog.Code = catalog.Code;
+            _catalog.Name = catalog.Name;
             _catalogManager.Add(_catalog);
             return View();
         }
 
-        public ActionResult Edit()
+        public ActionResult Edit(Catalog catalog)
         {
-            _catalog.Id = 3;
-            _catalog.Name = "C";
-            _catalogManager.Edit(_catalog);
+            _catalog.Id = catalog.Id;
+
+            Catalog aCatalog = _catalogManager.GetById(_catalog);
+
+            if (aCatalog != null)
+            {
+                _catalog.Code = catalog.Code;
+                _catalog.Name = catalog.Name;
+                _catalogManager.Edit(_catalog);
+            }
+            
+            return View();
+        }
+
+        public ActionResult Delete(Catalog catalog)
+        {
+            _catalog.Id = catalog.Id;
+            _catalogManager.Delete(_catalog);
             return View();
         }
 

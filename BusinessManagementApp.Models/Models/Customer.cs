@@ -13,7 +13,7 @@ namespace BusinessManagementApp.Models.Models
         public string Name { get; set; }
         public string Address { get; set; }
         public string Email { get; set; }
-        public double ContactNo { get; set; }
-        public double LoyaltyPoint { get; set; }
+        public int ContactNo { get; set; }
+        public int LoyaltyPoint { get; set; }
     }
 }

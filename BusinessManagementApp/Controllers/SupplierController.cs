@@ -15,30 +15,43 @@ namespace BusinessManagementApp.Controllers
         Supplier _supplier = new Supplier();
 
 
-        public ActionResult Add()
+        public ActionResult Add(Supplier supplier)
         {
-            _supplier.Code = "001";
-            _supplier.Name = "A";
-            _supplier.Address = "Dhaka";
-            _supplier.Email = "zia@gmail.com";
-            _supplier.Contact = 01774621935;
-            _supplier.ContactPerson = "Sultan";
+            _supplier.Code = supplier.Code;
+            _supplier.Name = supplier.Name;
+            _supplier.Address = supplier.Address;
+            _supplier.Email = supplier.Email;
+            _supplier.Contact = supplier.Contact;
+            _supplier.ContactPerson = supplier.ContactPerson;
             _supplierManager.Add(_supplier);
 
             return View();
         }
 
-        public ActionResult Edit()
+        public ActionResult Edit(Supplier supplier)
         {
-            _supplier.Id = 1;
-            _supplier.Code = "001";
-            _supplier.Name = "AB";
-            _supplier.Address = "Dhaka";
-            _supplier.Email = "zia@gmail.com";
-            _supplier.Contact = 01774621935;
-            _supplier.ContactPerson = "Sultan";
-            _supplierManager.Add(_supplier);
+            _supplier.Id = supplier.Id;
 
+            Supplier aSupplier = _supplierManager.GetById(_supplier);
+
+            if (aSupplier != null)
+            {
+                _supplier.Code = supplier.Code;
+                _supplier.Name = supplier.Name;
+                _supplier.Address = supplier.Address;
+                _supplier.Email = supplier.Email;
+                _supplier.Contact = supplier.Contact;
+                _supplier.ContactPerson = supplier.ContactPerson;
+                _supplierManager.Edit(_supplier);
+            }
+
+            return View();
+        }
+
+        public ActionResult Delete(Supplier supplier)
+        {
+            _supplier.Id = supplier.Id;
+            _supplierManager.Delete(supplier);
             return View();
         }
 

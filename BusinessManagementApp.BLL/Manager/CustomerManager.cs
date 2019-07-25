@@ -22,5 +22,20 @@ namespace BusinessManagementApp.BLL.Manager
             return _customerRepository.Edit(customer);
         }
 
+        public List<Customer> GetAll()
+        {
+            return _customerRepository.GetAll();
+        }
+
+        public Customer GetById(Customer customer)
+        {
+            return _customerRepository.GetById(customer);
+        }
+
+        public bool Delete(Customer customer)
+        {
+            return _customerRepository.Delete(customer);
+        }
+
     }
 }

@@ -15,8 +15,8 @@ namespace BusinessManagementApp.Repository.Repository
         public bool Add(Product product)
         {
             db.Products.Add(product);
-            int saved = db.SaveChanges();
-            if (saved > 0)
+            int isExecuted = db.SaveChanges();
+            if (isExecuted > 0)
             {
                 return true;
             }
@@ -26,15 +26,46 @@ namespace BusinessManagementApp.Repository.Repository
         public bool Edit(Product product)
         {
             Product aProduct = db.Products.FirstOrDefault(c => c.Id == product.Id);
-            int saved = 0;
+            int isExecuted = 0;
 
             if (aProduct != null)
             {
+                aProduct.Code = product.Code;
                 aProduct.Name = product.Name;
-                saved = db.SaveChanges();
+                aProduct.Catagory = product.Catagory;
+                aProduct.ReorderLevel = product.ReorderLevel;
+                aProduct.Description = product.Description;
+                isExecuted = db.SaveChanges();
             }
 
-            if (saved > 0)
+            if (isExecuted > 0)
+            {
+                return true;
+            }
+
+            return false;
+        }
+
+        public List<Product> GetAll()
+        {
+            return db.Products.ToList();
+        }
+
+        public Product GetById(Product product)
+        {
+            Product aProduct = db.Products.FirstOrDefault(c => c.Id == product.Id);
+            return aProduct;
+        }
+
+        public bool Delete(Product product)
+        {
+            int isExecuted = 0;
+            Product aProduct = db.Products.FirstOrDefault(c => c.Id == product.Id);
+
+            db.Products.Remove(aProduct);
+            isExecuted = db.SaveChanges();
+
+            if (isExecuted > 0)
             {
                 return true;
             }

@@ -177,8 +177,12 @@
     <Content Include="Views\Customer\Edit.cshtml" />
     <Content Include="Views\Customer\Search.cshtml" />
     <Content Include="Views\Supplier\Add.cshtml" />
-    <Content Include="Views\Supplier\Edit.cshtml" />
     <Content Include="Views\Supplier\Search.cshtml" />
+    <Content Include="Views\Catalog\Delete.cshtml" />
+    <Content Include="Views\Supplier\Edit.cshtml" />
+    <Content Include="Views\Product\Delete.cshtml" />
+    <Content Include="Views\Customer\Delete.cshtml" />
+    <Content Include="Views\Supplier\Delete.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -16,8 +16,8 @@ namespace BusinessManagementApp.Repository.Repository
         {
             db.Catalogs.Add(catalog);
 
-            int saved = db.SaveChanges();
-            if (saved > 0)
+            int isExecuted = db.SaveChanges();
+            if (isExecuted > 0)
             {
                 return true;
             }
@@ -28,15 +28,16 @@ namespace BusinessManagementApp.Repository.Repository
         public bool Edit(Catalog catalog)
         {
             Catalog aCatalog = db.Catalogs.FirstOrDefault(c => c.Id == catalog.Id);
-            int saved = 0;
+            int isExecuted = 0;
 
             if (aCatalog != null)
             {
+                aCatalog.Code = catalog.Code;
                 aCatalog.Name = catalog.Name;
-                saved = db.SaveChanges();
+                isExecuted = db.SaveChanges();
             }
 
-            if (saved > 0)
+            if (isExecuted > 0)
             {
                 return true;
             }
@@ -44,7 +45,32 @@ namespace BusinessManagementApp.Repository.Repository
             return false;
         }
 
+        public bool Delete(Catalog catalog)
+        {
+            int isExecuted = 0;
+            Catalog aCatalog = db.Catalogs.FirstOrDefault(c => c.Id == catalog.Id);
 
+            db.Catalogs.Remove(aCatalog);
+            isExecuted = db.SaveChanges();
+
+            if (isExecuted > 0)
+            {
+                return true;
+            }
+
+            return false;
+        }
+
+        public List<Catalog> GetAll()
+        {
+            return db.Catalogs.ToList();
+        }
+
+        public Catalog GetById(Catalog catalog)
+        {
+            Catalog aCatalog = db.Catalogs.FirstOrDefault(c => c.Id == catalog.Id);
+            return aCatalog;
+        }
 
     }
 }

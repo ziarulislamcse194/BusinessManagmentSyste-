@@ -49,6 +49,19 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DatabaseContext\BusinessDbContext.cs" />
+    <Compile Include="Migrations\201907251545171_InitialCreate.cs" />
+    <Compile Include="Migrations\201907251545171_InitialCreate.Designer.cs">
+      <DependentUpon>201907251545171_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201907251623312_customer_added.cs" />
+    <Compile Include="Migrations\201907251623312_customer_added.Designer.cs">
+      <DependentUpon>201907251623312_customer_added.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201907251643506_Product_added.cs" />
+    <Compile Include="Migrations\201907251643506_Product_added.Designer.cs">
+      <DependentUpon>201907251643506_Product_added.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -60,6 +73,17 @@
       <Project>{b5dc7440-f61f-45a3-b449-ce1cf1c732e9}</Project>
       <Name>BusinessManagementApp.Models</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201907251545171_InitialCreate.resx">
+      <DependentUpon>201907251545171_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201907251623312_customer_added.resx">
+      <DependentUpon>201907251623312_customer_added.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201907251643506_Product_added.resx">
+      <DependentUpon>201907251643506_Product_added.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
