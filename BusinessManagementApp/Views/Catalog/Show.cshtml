@@ -13,6 +13,13 @@
     <meta name="viewport" content="width=device-width" />
     <title>Show</title>
     <style>
+        #header {
+            height: 50px;
+            background-color: burlywood;
+            font-size: xx-large;
+            text-align: center;
+        }
+
         table {
             font-family: arial, sans-serif;
             border-collapse: collapse;
@@ -29,44 +36,43 @@
             background-color: #dddddd;
         }
     </style>
-    <link href="~/Content/bootstrap-grid.min.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
 </head>
 <body>
     <div>
-        <form method="post">
+        <div class="container">
+            <div class="row">
+                <div class="col" id="header">
+                    Catagory Information
+                </div>
+            </div><br><br>
+            <form method="post">
+                <table>
+                    <div class="form-group row">
+                        <label for="inputEmail3" class="col-sm-2 col-form-label">Code</label>
+                        <div class="col-sm-10">
+                            @Html.TextBoxFor(c=>c.Code, null, htmlAttributes: new { @class = "form-control", placeholder = "Code" })
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                    <label for="inputEmail3" class="col-sm-2 col-form-label">Name</label>
+                    <div class="col-sm-10">
+                        @Html.TextBoxFor(c=>c.Name, null, htmlAttributes: new { @class = "form-control", placeholder = "Name" })
+                    </div>
+                    <button type="submit" class="btn btn-info" value="Search">Search</button>
+                </table>
+            </form><br><br>
+            
             <table>
-                <tr>
-                    <td>Code</td>
-                    <td>
-                        <input type="text" name="Code" value="@Model.Code" />
-                    </td>
-                </tr>
-
-                <tr>
-                    <td>Name</td>
-                    <td>
-                        <input type="text" name="Name" value="@Model.Name" />
-                    </td>
-                </tr>
-
-                <tr>
-                    <td>Action</td>
-                    <td>
-                        <input type="submit" value="Search">
-                    </td>
-                </tr>
-            </table>
-        </form>
-        <table>
-            <thead>
+                <thead>
                 <tr>
                     <td>SL</td>
                     <td>Code</td>
                     <td>Name</td>
                 </tr>
-            </thead>
+                </thead>
 
-            <tbody>
+                <tbody>
                 @{ int SL = 1;}
                 @foreach (var catalog in Model.Catalogs)
                 {
@@ -76,10 +82,12 @@
                         <td>@catalog.Name</td>
                     </tr>
                 }
-            </tbody>
-        </table>
+                </tbody>
+            </table>
+
+        </div>
     </div>
     <script src="~/Scripts/jquery-3.0.0.min.js"></script>
-    <script src="~/Scripts/popper.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
 </body>
 </html>

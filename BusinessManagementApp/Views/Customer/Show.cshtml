@@ -10,6 +10,13 @@
     <meta name="viewport" content="width=device-width" />
     <title>Show</title>
     <style>
+        #header {
+            height: 50px;
+            background-color: burlywood;
+            font-size: xx-large;
+            text-align: center;
+        }
+
         table {
             font-family: arial, sans-serif;
             border-collapse: collapse;
@@ -26,60 +33,60 @@
             background-color: #dddddd;
         }
     </style>
-    <link href="~/Content/bootstrap-grid.min.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
 </head>
 <body>
-    <div>
+    <div class="container">
+        <div class="row">
+            <div class="col" id="header">
+                Customer Information
+            </div>
+        </div>
         <form method="post">
             <table>
-                <tr>
-                    <td>Code</td>
-                    <td>
-                        <input type="text" name="Code" value="@Model.Code" />
-                    </td>
-                </tr>
+                <div class="row">
+                    <div class="col">
+                        Code:
+                        <input type="text" class="form-control" name="Code" value="@Model.Code" />
+                    </div>
+                </div>
 
-                <tr>
-                    <td>Name</td>
-                    <td>
-                        <input type="text" name="Name" value="@Model.Name" />
-                    </td>
-                </tr>
+                <div class="row">
+                    <div class="col">
+                        Name:
+                        <input type="text" class="form-control" name="Name" value="@Model.Name" />
+                    </div>
+                </div>
 
-                <tr>
-                    <td>Address</td>
-                    <td>
-                        <input type="text" name="Address" value="@Model.Address" />
-                    </td>
-                </tr>
+                <div class="row">
+                    <div class="col">
+                        Address:
+                        <input type="text" class="form-control" name="Address" value="@Model.Address" />
+                    </div>
+                </div>
 
-                <tr>
-                    <td>Email</td>
-                    <td>
-                        <input type="text" name="Email" value="@Model.Email" />
-                    </td>
-                </tr>
+                <div class="row">
+                    <div class="col">
+                        Email:
+                        <input type="text" class="form-control" name="Email" value="@Model.Email" />
+                    </div>
+                </div>
 
-                <tr>
-                    <td>ContactNo</td>
-                    <td>
-                        <input type="number" name="ContactNo" value="@Model.ContactNo" />
-                    </td>
-                </tr>
+                <div class="row">
+                    <div class="col">
+                        ContactNo:
+                        <input type="number" class="form-control" name="ContactNo" value="@Model.ContactNo" />
+                    </div>
+                </div>
 
-                <tr>
-                    <td>LoyaltyPoint</td>
-                    <td>
-                        <input type="number" name="LoyaltyPoint" value="@Model.LoyaltyPoint" />
-                    </td>
-                </tr>
+                <div class="row">
+                    <div class="col">
+                        LoyaltyPoint:
+                        <input type="text" class="form-control" name="LoyaltyPoint" value="@Model.LoyaltyPoint" />
+                    </div>
+                </div>
 
-                <tr>
-                    <td>Action</td>
-                    <td>
-                        <input type="submit" value="Search">
-                    </td>
-                </tr>
+                <button type="submit" class="btn btn-primary" value="Save">Search</button>
             </table>
         </form>
         <table>
@@ -99,20 +106,20 @@
                 @{ int SL = 1;}
                 @foreach (var customer in Model.Customers)
                 {
-                <tr>
-                    <td>@(SL++)</td>
-                    <td>@customer.Code</td>
-                    <td>@customer.Name</td>
-                    <td>@customer.Address</td>
-                    <td>@customer.Email</td>
-                    <td>@customer.ContactNo</td>
-                    <td>@customer.LoyaltyPoint</td>
-                </tr>
+                    <tr>
+                        <td>@(SL++)</td>
+                        <td>@customer.Code</td>
+                        <td>@customer.Name</td>
+                        <td>@customer.Address</td>
+                        <td>@customer.Email</td>
+                        <td>@customer.ContactNo</td>
+                        <td>@customer.LoyaltyPoint</td>
+                    </tr>
                 }
             </tbody>
         </table>
     </div>
     <script src="~/Scripts/jquery-3.0.0.min.js"></script>
-    <script src="~/Scripts/popper.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
 </body>
 </html>
