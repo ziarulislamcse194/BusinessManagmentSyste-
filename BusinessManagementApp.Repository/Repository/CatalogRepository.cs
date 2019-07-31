@@ -2,6 +2,7 @@
 using BusinessManagementAppDatabaseContext.DatabaseContext;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,28 +15,10 @@ namespace BusinessManagementApp.Repository.Repository
 
         public bool Add(Catalog catalog)
         {
-            db.Catalogs.Add(catalog);
-
-            int isExecuted = db.SaveChanges();
-            if (isExecuted > 0)
-            {
-                return true;
-            }
-
-            return false;
-        }
-
-        public bool Edit(Catalog catalog)
-        {
-            Catalog aCatalog = db.Catalogs.FirstOrDefault(c => c.Id == catalog.Id);
             int isExecuted = 0;
 
-            if (aCatalog != null)
-            {
-                aCatalog.Code = catalog.Code;
-                aCatalog.Name = catalog.Name;
-                isExecuted = db.SaveChanges();
-            }
+            db.Catalogs.Add(catalog);
+            isExecuted = db.SaveChanges();
 
             if (isExecuted > 0)
             {
@@ -58,15 +41,40 @@ namespace BusinessManagementApp.Repository.Repository
                 return true;
             }
 
+
             return false;
         }
 
+        public bool Update(Catalog catalog)
+        {
+            int isExecuted = 0;
+            //Method 1
+            //Student aStudent = db.Students.FirstOrDefault(c => c.ID == student.ID);
+            //if (aStudent != null)
+            //{
+            //    aStudent.Name = student.Name;
+            //    isExecuted = db.SaveChanges();
+            //}
+
+            //Method 2
+            db.Entry(catalog).State = EntityState.Modified;
+            isExecuted = db.SaveChanges();
+            if (isExecuted > 0)
+            {
+                return true;
+            }
+            return false;
+        }
+
+        public bool Show(Catalog catalog)
+        {
+            throw new NotImplementedException();
+        }
         public List<Catalog> GetAll()
         {
             return db.Catalogs.ToList();
         }
-
-        public Catalog GetById(Catalog catalog)
+        public Catalog GetByID(Catalog catalog)
         {
             Catalog aCatalog = db.Catalogs.FirstOrDefault(c => c.Id == catalog.Id);
             return aCatalog;

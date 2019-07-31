@@ -76,5 +76,12 @@ namespace BusinessManagementApp.Repository.Repository
 
             return false;
         }
+
+        public bool Show(Customer customer)
+        {
+            throw new NotImplementedException();
+        }
+
+
     }
 }

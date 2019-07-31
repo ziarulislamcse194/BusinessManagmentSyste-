@@ -2,6 +2,7 @@
 using BusinessManagementAppDatabaseContext.DatabaseContext;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,29 +15,10 @@ namespace BusinessManagementApp.Repository.Repository
 
         public bool Add(Product product)
         {
-            db.Products.Add(product);
-            int isExecuted = db.SaveChanges();
-            if (isExecuted > 0)
-            {
-                return true;
-            }
-            return false;
-        }
-
-        public bool Edit(Product product)
-        {
-            Product aProduct = db.Products.FirstOrDefault(c => c.Id == product.Id);
             int isExecuted = 0;
 
-            if (aProduct != null)
-            {
-                aProduct.Code = product.Code;
-                aProduct.Name = product.Name;
-                aProduct.Catagory = product.Catagory;
-                aProduct.ReorderLevel = product.ReorderLevel;
-                aProduct.Description = product.Description;
-                isExecuted = db.SaveChanges();
-            }
+            db.Products.Add(product);
+            isExecuted = db.SaveChanges();
 
             if (isExecuted > 0)
             {
@@ -44,17 +26,6 @@ namespace BusinessManagementApp.Repository.Repository
             }
 
             return false;
-        }
-
-        public List<Product> GetAll()
-        {
-            return db.Products.ToList();
-        }
-
-        public Product GetById(Product product)
-        {
-            Product aProduct = db.Products.FirstOrDefault(c => c.Id == product.Id);
-            return aProduct;
         }
 
         public bool Delete(Product product)
@@ -70,7 +41,34 @@ namespace BusinessManagementApp.Repository.Repository
                 return true;
             }
 
+
             return false;
+        }
+
+        public bool Update(Product product)
+        {
+            int isExecuted = 0;
+            db.Entry(product).State = EntityState.Modified;
+            isExecuted = db.SaveChanges();
+            if (isExecuted > 0)
+            {
+                return true;
+            }
+            return false;
+        }
+
+        public bool Show(Product product)
+        {
+            throw new NotImplementedException();
+        }
+        public List<Product> GetAll()
+        {
+            return db.Products.ToList();
+        }
+        public Product GetByID(Product product)
+        {
+            Product aProduct = db.Products.FirstOrDefault(c => c.Id == product.Id);
+            return aProduct;
         }
 
     }

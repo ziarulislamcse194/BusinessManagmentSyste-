@@ -13,41 +13,122 @@ namespace BusinessManagementApp.Controllers
         CatalogManager _catalogManager = new CatalogManager();
         Catalog _catalog = new Catalog();
 
+        [HttpGet]
+        public ActionResult Add()
+        {
+            return View();
+        }
+
+        [HttpPost]
         public ActionResult Add(Catalog catalog)
         {
-            _catalog.Code = catalog.Code;
-            _catalog.Name = catalog.Name;
-            _catalogManager.Add(_catalog);
+            if (ModelState.IsValid)
+            {
+                if (_catalogManager.Add(catalog))
+                {
+                    ViewBag.SuccesMsg = "Saved";
+                }
+                else
+                {
+                    ViewBag.FailedMsg = "Failed";
+                }
+            }
+            else
+            {
+                ViewBag.FailedMsg = "VAlidation Failed";
+            }
+
             return View();
         }
 
+
+        [HttpGet]
+        public ActionResult Edit(int? Id)
+        {
+            _catalog.Id = Convert.ToInt32(Id);
+            var strudent = _catalogManager.GetByID(_catalog);
+            return View(strudent);
+        }
+
+        [HttpPost]
         public ActionResult Edit(Catalog catalog)
         {
-            _catalog.Id = catalog.Id;
-
-            Catalog aCatalog = _catalogManager.GetById(_catalog);
-
-            if (aCatalog != null)
+            if (ModelState.IsValid)
             {
-                _catalog.Code = catalog.Code;
-                _catalog.Name = catalog.Name;
-                _catalogManager.Edit(_catalog);
+                if (_catalogManager.Update(catalog))
+                {
+                    ViewBag.SuccesMsg = "Updated";
+                }
+                else
+                {
+                    ViewBag.FailedMsg = "Failed";
+                }
             }
-            
-            return View();
+            else
+            {
+                ViewBag.FailedMsg = "VAlidation Failed";
+            }
+
+            return View(catalog);
         }
 
+        [HttpGet]
+
+        public ActionResult Delete(int? id)
+        {
+            _catalog.Id = Convert.ToInt32(id);
+            var strudent = _catalogManager.GetByID(_catalog);
+            return View(strudent);
+        }
+
+        [HttpPost]
         public ActionResult Delete(Catalog catalog)
         {
-            _catalog.Id = catalog.Id;
-            _catalogManager.Delete(_catalog);
-            return View();
+            if (ModelState.IsValid)
+            {
+                if (_catalogManager.Delete(catalog))
+                {
+                    ViewBag.SuccesMsg = "Deleted";
+                }
+                else
+                {
+                    ViewBag.FailedMsg = "Failed";
+                }
+            }
+            else
+            {
+                ViewBag.FailedMsg = "VAlidation Failed";
+            }
+
+            return View(catalog);
         }
 
-        public ActionResult Search()
+
+        [HttpGet]
+
+        public ActionResult Show()
         {
-            return View();
+            _catalog.Catalogs = _catalogManager.GetAll();
+            return View(_catalog);
         }
 
+        [HttpPost]
+
+        public ActionResult Show(Catalog catalog)
+        {
+            var catalogs = _catalogManager.GetAll();
+            if (catalog.Code != null)
+            {
+                catalogs = catalogs.Where(c => c.Code.ToLower().Contains(catalog.Code.ToLower())).ToList();
+            }
+
+            if (catalog.Name != null)
+            {
+                catalogs = catalogs.Where(c => c.Name.ToLower().Contains(catalog.Name.ToLower())).ToList();
+            }
+
+            catalog.Catalogs = catalogs;
+            return View(catalog);
+        }
     }
 }

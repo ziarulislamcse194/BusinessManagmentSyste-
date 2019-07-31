@@ -4,16 +4,17 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{B5DC7440-F61F-45A3-B449-CE1CF1C732E9}</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>BusinessManagementApp.Models</RootNamespace>
-    <AssemblyName>BusinessManagementApp.Models</AssemblyName>
+    <ProjectGuid>{B073F0C2-F2B5-4490-9A04-56DDE8E86E2B}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>BusinessManagementConsoleApp</RootNamespace>
+    <AssemblyName>BusinessManagementConsoleApp</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -23,6 +24,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -31,6 +33,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
@@ -42,11 +50,29 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Models\Catalog.cs" />
-    <Compile Include="Models\Customer.cs" />
-    <Compile Include="Models\Product.cs" />
-    <Compile Include="Models\Supplier.cs" />
+    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BusinessManagementApp.BLL\BusinessManagementApp.BLL.csproj">
+      <Project>{55416953-4e86-4fa3-bc41-f9dffd8c6914}</Project>
+      <Name>BusinessManagementApp.BLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BusinessManagementApp.Models\BusinessManagementApp.Models.csproj">
+      <Project>{b5dc7440-f61f-45a3-b449-ce1cf1c732e9}</Project>
+      <Name>BusinessManagementApp.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BusinessManagementAppDatabaseContext\BusinessManagementAppDatabaseContext.csproj">
+      <Project>{03abf2ca-001d-419e-ad93-6a009eb49ed0}</Project>
+      <Name>BusinessManagementAppDatabaseContext</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Catalog\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

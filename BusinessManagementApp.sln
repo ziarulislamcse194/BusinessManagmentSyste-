@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BusinessManagementApp.Model
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BusinessManagementAppDatabaseContext", "BusinessManagementAppDatabaseContext\BusinessManagementAppDatabaseContext.csproj", "{03ABF2CA-001D-419E-AD93-6A009EB49ED0}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BusinessManagementConsoleApp", "BusinessManagementConsoleApp\BusinessManagementConsoleApp.csproj", "{B073F0C2-F2B5-4490-9A04-56DDE8E86E2B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{03ABF2CA-001D-419E-AD93-6A009EB49ED0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{03ABF2CA-001D-419E-AD93-6A009EB49ED0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{03ABF2CA-001D-419E-AD93-6A009EB49ED0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B073F0C2-F2B5-4490-9A04-56DDE8E86E2B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B073F0C2-F2B5-4490-9A04-56DDE8E86E2B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B073F0C2-F2B5-4490-9A04-56DDE8E86E2B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B073F0C2-F2B5-4490-9A04-56DDE8E86E2B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

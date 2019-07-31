@@ -157,7 +157,6 @@
     <Content Include="Views\web.config" />
     <None Include="packages.config" />
     <Content Include="Views\Catalog\Edit.cshtml" />
-    <Content Include="Views\Catalog\Search.cshtml" />
     <Content Include="Scripts\jquery-3.0.0.slim.min.map" />
     <Content Include="Scripts\jquery-3.0.0.min.map" />
     <Content Include="Scripts\umd\popper.min.js.map" />
@@ -169,20 +168,21 @@
     <Content Include="Scripts\popper.js.map" />
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
-    <Content Include="Views\Catalog\Add.cshtml" />
     <Content Include="Views\Product\Add.cshtml" />
     <Content Include="Views\Product\Edit.cshtml" />
-    <Content Include="Views\Product\Search.cshtml" />
     <Content Include="Views\Customer\Add.cshtml" />
     <Content Include="Views\Customer\Edit.cshtml" />
-    <Content Include="Views\Customer\Search.cshtml" />
     <Content Include="Views\Supplier\Add.cshtml" />
-    <Content Include="Views\Supplier\Search.cshtml" />
     <Content Include="Views\Catalog\Delete.cshtml" />
     <Content Include="Views\Supplier\Edit.cshtml" />
     <Content Include="Views\Product\Delete.cshtml" />
     <Content Include="Views\Customer\Delete.cshtml" />
     <Content Include="Views\Supplier\Delete.cshtml" />
+    <Content Include="Views\Product\Show.cshtml" />
+    <Content Include="Views\Catalog\Add.cshtml" />
+    <Content Include="Views\Catalog\Show.cshtml" />
+    <Content Include="Views\Customer\Show.cshtml" />
+    <Content Include="Views\Supplier\Show.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

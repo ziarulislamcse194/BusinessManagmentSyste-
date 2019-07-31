@@ -61,6 +61,22 @@
     <Compile Include="Migrations\201907251643506_Product_added.Designer.cs">
       <DependentUpon>201907251643506_Product_added.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201907300424110_CatalogAdded.cs" />
+    <Compile Include="Migrations\201907300424110_CatalogAdded.Designer.cs">
+      <DependentUpon>201907300424110_CatalogAdded.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201907300614534_CustomerAdded.cs" />
+    <Compile Include="Migrations\201907300614534_CustomerAdded.Designer.cs">
+      <DependentUpon>201907300614534_CustomerAdded.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201907301700424_ProductAdded.cs" />
+    <Compile Include="Migrations\201907301700424_ProductAdded.Designer.cs">
+      <DependentUpon>201907301700424_ProductAdded.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201907310354148_SupplierAdded.cs" />
+    <Compile Include="Migrations\201907310354148_SupplierAdded.Designer.cs">
+      <DependentUpon>201907310354148_SupplierAdded.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -83,6 +99,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201907251643506_Product_added.resx">
       <DependentUpon>201907251643506_Product_added.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201907300424110_CatalogAdded.resx">
+      <DependentUpon>201907300424110_CatalogAdded.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201907300614534_CustomerAdded.resx">
+      <DependentUpon>201907300614534_CustomerAdded.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201907301700424_ProductAdded.resx">
+      <DependentUpon>201907301700424_ProductAdded.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201907310354148_SupplierAdded.resx">
+      <DependentUpon>201907310354148_SupplierAdded.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

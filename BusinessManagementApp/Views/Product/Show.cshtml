@@ -1,0 +1,109 @@
+﻿
+@model BusinessManagementApp.Models.Models.Product
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Edit</title>
+    <style>
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        td, th {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #dddddd;
+        }
+    </style>
+</head>
+<body>
+<div>
+    <form method="post">
+        <table>
+            <tr>
+                <td>Code</td>
+                <td>
+                    <input type="text" name="Code" value="@Model.Code" />
+                </td>
+            </tr>
+
+            <tr>
+                <td>Name</td>
+                <td>
+                    <input type="text" name="Name" value="@Model.Name" />
+                </td>
+            </tr>
+
+            <tr>
+                <td>Catagory</td>
+                <td>
+                    <input type="text" name="Catagory" value="@Model.Catagory" />
+                </td>
+            </tr>
+
+            <tr>
+                <td>ReorderLevel</td>
+                <td>
+                    <input type="text" name="ReorderLevel" value="@Model.ReorderLevel" />
+                </td>
+            </tr>
+
+            <tr>
+                <td>Description</td>
+                <td>
+                    <input type="text" name="Description" value="@Model.Description" />
+                </td>
+            </tr>
+
+            <tr>
+                <td>Action</td>
+                <td>
+                    <input type="submit" value="Search">
+                </td>
+            </tr>
+        </table>
+    </form>
+    <table>
+        <thead>
+            <tr>
+                <td>SL</td>
+                <td>Code</td>
+                <td>Name</td>
+                <td>Catagory</td>
+                <td>ReorderLevel</td>
+                <td>Description</td>
+            </tr>
+        </thead>
+
+        <tbody>
+        @{ int SL = 1;}
+        @foreach (var product in Model.Products)
+        {
+            <tr>
+                <td>@(SL++)</td>
+                <td>@product.Code</td>
+                <td>@product.Name</td>
+                <td>@product.Catagory</td>
+                <td>@product.ReorderLevel</td>
+                <td>@product.Description</td>
+            </tr>
+        }
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
+

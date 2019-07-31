@@ -11,53 +11,146 @@ namespace BusinessManagementApp.Controllers
     public class SupplierController : Controller
     {
         SupplierManager _supplierManager = new SupplierManager();
-
         Supplier _supplier = new Supplier();
 
 
-        public ActionResult Add(Supplier supplier)
+        [HttpGet]
+        public ActionResult Add()
         {
-            _supplier.Code = supplier.Code;
-            _supplier.Name = supplier.Name;
-            _supplier.Address = supplier.Address;
-            _supplier.Email = supplier.Email;
-            _supplier.Contact = supplier.Contact;
-            _supplier.ContactPerson = supplier.ContactPerson;
-            _supplierManager.Add(_supplier);
-
             return View();
         }
 
-        public ActionResult Edit(Supplier supplier)
+        [HttpPost]
+        public ActionResult Add(Supplier supplier)
         {
-            _supplier.Id = supplier.Id;
-
-            Supplier aSupplier = _supplierManager.GetById(_supplier);
-
-            if (aSupplier != null)
+            if (ModelState.IsValid)
             {
-                _supplier.Code = supplier.Code;
-                _supplier.Name = supplier.Name;
-                _supplier.Address = supplier.Address;
-                _supplier.Email = supplier.Email;
-                _supplier.Contact = supplier.Contact;
-                _supplier.ContactPerson = supplier.ContactPerson;
-                _supplierManager.Edit(_supplier);
+                if (_supplierManager.Add(supplier))
+                {
+                    ViewBag.SuccesMsg = "Saved";
+                }
+                else
+                {
+                    ViewBag.FailedMsg = "Failed";
+                }
+            }
+            else
+            {
+                ViewBag.FailedMsg = "VAlidation Failed";
             }
 
             return View();
         }
 
-        public ActionResult Delete(Supplier supplier)
+
+        [HttpGet]
+        public ActionResult Edit(int? Id)
         {
-            _supplier.Id = supplier.Id;
-            _supplierManager.Delete(supplier);
-            return View();
+            _supplier.Id = Convert.ToInt32(Id);
+            var supplier = _supplierManager.GetByID(_supplier);
+            return View(supplier);
         }
 
-        public ActionResult Search()
+        [HttpPost]
+        public ActionResult Edit(Supplier supplier)
         {
-            return View();
+            if (ModelState.IsValid)
+            {
+                if (_supplierManager.Update(supplier))
+                {
+                    ViewBag.SuccesMsg = "Updated";
+                }
+                else
+                {
+                    ViewBag.FailedMsg = "Failed";
+                }
+            }
+            else
+            {
+                ViewBag.FailedMsg = "VAlidation Failed";
+            }
+
+            return View(supplier);
+        }
+
+        [HttpGet]
+
+        public ActionResult Delete(int? id)
+        {
+            _supplier.Id = Convert.ToInt32(id);
+            var supplier = _supplierManager.GetByID(_supplier);
+            return View(supplier);
+        }
+
+        [HttpPost]
+        public ActionResult Delete(Supplier supplier)
+        {
+            if (ModelState.IsValid)
+            {
+                if (_supplierManager.Delete(supplier))
+                {
+                    ViewBag.SuccesMsg = "Deleted";
+                }
+                else
+                {
+                    ViewBag.FailedMsg = "Failed";
+                }
+            }
+            else
+            {
+                ViewBag.FailedMsg = "VAlidation Failed";
+            }
+
+            return View(supplier);
+        }
+
+
+        [HttpGet]
+
+        public ActionResult Show()
+        {
+            _supplier.Suppliers = _supplierManager.GetAll();
+            return View(_supplier);
+        }
+
+        [HttpPost]
+
+        public ActionResult Show(Supplier supplier)
+        {
+            var suppliers = _supplierManager.GetAll();
+
+            if (supplier.Code != null)
+            {
+                suppliers = suppliers.Where(c => c.Code.ToLower().Contains(supplier.Code.ToLower())).ToList();
+            }
+
+            if (supplier.Name != null)
+            {
+                suppliers = suppliers.Where(c => c.Name.ToLower().Contains(supplier.Name.ToLower())).ToList();
+            }
+
+            if (supplier.Address != null)
+            {
+                suppliers = suppliers.Where(c => c.Address.ToLower().Contains(supplier.Address.ToLower())).ToList();
+            }
+
+            if (supplier.Email != null)
+            {
+                suppliers = suppliers.Where(c => c.Email.ToLower().Contains(supplier.Email.ToLower())).ToList();
+            }
+
+            if (supplier.Contact > 0)
+            {
+                suppliers = suppliers.Where(c => c.Contact == supplier.Contact).ToList();
+            }
+
+            if (supplier.ContactPerson != null)
+            {
+                suppliers = suppliers.Where(c => c.ContactPerson.ToLower().Contains(supplier.ContactPerson.ToLower())).ToList();
+            }
+
+            supplier.Suppliers = suppliers;
+            return View(supplier);
         }
     }
 }

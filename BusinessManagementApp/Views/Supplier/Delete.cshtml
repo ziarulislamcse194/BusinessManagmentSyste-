@@ -1,7 +1,21 @@
 ﻿
+@model BusinessManagementApp.Models.Models.Supplier
+
+
 @{
     Layout = null;
 }
+
+@if (ViewBag.SuccesMsg != null)
+{
+    <h3 style="font-family: 'Times New Roman', Times, Serif; color: darkblue"> @ViewBag.SuccesMsg</h3>
+}
+
+@if (ViewBag.FailedMsg != null)
+{
+    <h3 style="font-family: 'Times New Roman', Times, Serif; color: darkblue"> @ViewBag.FailedMsg</h3>
+}
+
 
 <!DOCTYPE html>
 
@@ -9,86 +23,61 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>Delete</title>
-    <title>Add</title>
-    <style>
-        input[type=text] {
-            width: 100%;
-            padding: 12px 20px;
-            margin: 8px 0;
-            display: inline-block;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            box-sizing: border-box;
-        }
-
-        input[type=submit] {
-            width: 100%;
-            background-color: burlywood;
-            color: white;
-            padding: 14px 20px;
-            margin: 8px 0;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-        }
-
-            input[type=submit]:hover {
-                background-color: #45a049;
-            }
-
-        div {
-            border-radius: 5px;
-            background-color: #f2f2f2;
-            padding: 5px;
-        }
-
-        #footer {
-            height: 30px;
-            width: 100%;
-            bottom: 0px;
-            position: absolute;
-            background-color: burlywood;
-            text-align: center;
-        }
-
-        #header {
-            text-align: center;
-            background-color: burlywood;
-        }
-    </style>
-    <link href="~/Content/bootstrap-grid.min.css" rel="stylesheet" />
 </head>
 <body>
-<div id="header">
-    <h1>Supplier</h1>
-</div><br>
 <div>
-    <form action="/action_page.php">
-        <label for="fname">Code:</label>
-        <input type="text" id="fname" name="code" placeholder="Code..">
+    <form method="post">
+        <table>
+            <tr>
+                <td>Code</td>
+                <td>
+                    <input type="text" name="Code" value="@Model.Code">
+                </td>
+            </tr>
 
-        <label for="name">Name</label>
-        <input type="text" id="name" name="name" placeholder="Name..">
+            <tr>
+                <td>Name</td>
+                <td>
+                    <input type="text" name="Name" value="@Model.Name">
+                </td>
+            </tr>
 
-        <label for="fname">Address:</label>
-        <input type="text" id="fname" name="address" placeholder="Address..">
+            <tr>
+                <td>Address</td>
+                <td>
+                    <input type="text" name="Address" value="@Model.Address">
+                </td>
+            </tr>
 
-        <label for="fname">Email:</label>
-        <input type="text" id="fname" name="email" placeholder="Email..">
+            <tr>
+                <td>Email</td>
+                <td>
+                    <input type="text" name="Email" value="@Model.Email">
+                </td>
+            </tr>
 
-        <label for="fname">Contact:</label>
-        <input type="text" id="fname" name="contact" placeholder="Contact Number..">
+            <tr>
+                <td>Contact</td>
+                <td>
+                    <input type="number" name="Contact" value="@Model.Contact">
+                </td>
+            </tr>
 
-        <label for="fname">Contact Person:</label>
-        <input type="text" id="fname" name="contactPerson" placeholder="Contact Person..">
+            <tr>
+                <td>ContactPerson</td>
+                <td>
+                    <input type="text" name="ContactPerson" value="@Model.ContactPerson">
+                </td>
+            </tr>
 
-        <input type="submit" value="Delete">
+            <tr>
+                <td>Action</td>
+                <td>
+                    <input type="submit" value="Delete">
+                </td>
+            </tr>
+        </table>
     </form>
-</div><br>
-<fieldset></fieldset>
-<div id="footer" class="row">
 </div>
-<script src="~/Scripts/jquery-3.0.0.min.js"></script>
-<script src="~/Scripts/popper.min.js"></script>
 </body>
 </html>

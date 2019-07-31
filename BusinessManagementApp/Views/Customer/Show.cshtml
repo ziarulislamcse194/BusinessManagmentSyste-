@@ -1,17 +1,6 @@
 ﻿@model BusinessManagementApp.Models.Models.Customer
-
 @{
     Layout = null;
-}
-
-@if (ViewBag.SuccesMsg != null)
-{
-    <h3 style="font-family: 'Times New Roman', Times, Serif; color: darkblue">@ViewBag.SuccesMsg</h3>
-}
-
-@if (ViewBag.FailedMsg != null)
-{
-    <h3 style="font-family: 'Times New Roman', Times, Serif; color: darkblue">@ViewBag.FailedMsg</h3>
 }
 
 <!DOCTYPE html>
@@ -19,7 +8,24 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <title>Edit</title>
+    <title>Show</title>
+    <style>
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        td, th {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #dddddd;
+        }
+    </style>
     <link href="~/Content/bootstrap-grid.min.css" rel="stylesheet" />
 </head>
 <body>
@@ -71,11 +77,40 @@
                 <tr>
                     <td>Action</td>
                     <td>
-                        <input type="submit" value="Update">
+                        <input type="submit" value="Search">
                     </td>
                 </tr>
             </table>
         </form>
+        <table>
+            <thead>
+                <tr>
+                    <td>SL</td>
+                    <td>Code</td>
+                    <td>Name</td>
+                    <td>Address</td>
+                    <td>Email</td>
+                    <td>ContactNo</td>
+                    <td>LoyaltyPoint</td>
+                </tr>
+            </thead>
+
+            <tbody>
+                @{ int SL = 1;}
+                @foreach (var customer in Model.Customers)
+                {
+                <tr>
+                    <td>@(SL++)</td>
+                    <td>@customer.Code</td>
+                    <td>@customer.Name</td>
+                    <td>@customer.Address</td>
+                    <td>@customer.Email</td>
+                    <td>@customer.ContactNo</td>
+                    <td>@customer.LoyaltyPoint</td>
+                </tr>
+                }
+            </tbody>
+        </table>
     </div>
     <script src="~/Scripts/jquery-3.0.0.min.js"></script>
     <script src="~/Scripts/popper.min.js"></script>

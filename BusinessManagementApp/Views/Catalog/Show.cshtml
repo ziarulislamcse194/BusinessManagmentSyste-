@@ -1,0 +1,85 @@
+﻿
+@model BusinessManagementApp.Models.Models.Catalog
+
+@{
+    Layout = null;
+}
+
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Show</title>
+    <style>
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        td, th {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #dddddd;
+        }
+    </style>
+    <link href="~/Content/bootstrap-grid.min.css" rel="stylesheet" />
+</head>
+<body>
+    <div>
+        <form method="post">
+            <table>
+                <tr>
+                    <td>Code</td>
+                    <td>
+                        <input type="text" name="Code" value="@Model.Code" />
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>Name</td>
+                    <td>
+                        <input type="text" name="Name" value="@Model.Name" />
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>Action</td>
+                    <td>
+                        <input type="submit" value="Search">
+                    </td>
+                </tr>
+            </table>
+        </form>
+        <table>
+            <thead>
+                <tr>
+                    <td>SL</td>
+                    <td>Code</td>
+                    <td>Name</td>
+                </tr>
+            </thead>
+
+            <tbody>
+                @{ int SL = 1;}
+                @foreach (var catalog in Model.Catalogs)
+                {
+                    <tr>
+                        <td>@(SL++)</td>
+                        <td>@catalog.Code</td>
+                        <td>@catalog.Name</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+    <script src="~/Scripts/jquery-3.0.0.min.js"></script>
+    <script src="~/Scripts/popper.min.js"></script>
+</body>
+</html>

@@ -16,26 +16,26 @@ namespace BusinessManagementApp.BLL.Manager
         {
             return _catalogRepository.Add(catalog);
         }
-
-
-        public bool Edit(Catalog catalog)
-        {
-            return _catalogRepository.Edit(catalog);
-        }
-
         public bool Delete(Catalog catalog)
         {
             return _catalogRepository.Delete(catalog);
         }
+        public bool Update(Catalog catalog)
+        {
+            return _catalogRepository.Update(catalog);
+        }
 
+        public bool Show(Catalog catalog)
+        {
+            return _catalogRepository.Show(catalog);
+        }
         public List<Catalog> GetAll()
         {
             return _catalogRepository.GetAll();
         }
-
-        public Catalog GetById(Catalog catalog)
+        public Catalog GetByID(Catalog catalog)
         {
-            return _catalogRepository.GetById(catalog);
+            return _catalogRepository.GetByID(catalog);
         }
 
 

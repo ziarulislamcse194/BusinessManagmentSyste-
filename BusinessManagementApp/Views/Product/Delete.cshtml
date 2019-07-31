@@ -1,6 +1,18 @@
 ﻿
+@model BusinessManagementApp.Models.Models.Product
+
 @{
     Layout = null;
+}
+
+@if (ViewBag.SuccesMsg != null)
+{
+    <h3 style="font-family: 'Times New Roman', Times, Serif; color: darkblue"> @ViewBag.SuccesMsg</h3>
+}
+
+@if (ViewBag.FailedMsg != null)
+{
+    <h3 style="font-family: 'Times New Roman', Times, Serif; color: darkblue"> @ViewBag.FailedMsg</h3>
 }
 
 <!DOCTYPE html>
@@ -9,84 +21,55 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>Delete</title>
-    <style>
-        input[type=text] {
-            width: 100%;
-            padding: 12px 20px;
-            margin: 8px 0;
-            display: inline-block;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            box-sizing: border-box;
-        }
-
-        input[type=submit] {
-            width: 100%;
-            background-color: burlywood;
-            color: white;
-            padding: 14px 20px;
-            margin: 8px 0;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-        }
-
-            input[type=submit]:hover {
-                background-color: #45a049;
-            }
-
-        div {
-            border-radius: 5px;
-            background-color: #f2f2f2;
-            padding: 5px;
-        }
-
-        #footer {
-            height: 30px;
-            width: 100%;
-            bottom: 0px;
-            position: absolute;
-            background-color: burlywood;
-            text-align: center;
-        }
-
-        #header {
-            text-align: center;
-            background-color: burlywood;
-        }
-    </style>
-    <link href="~/Content/bootstrap-grid.min.css" rel="stylesheet" />
 </head>
 <body>
-    <<div id="header">
-    <h1>Product</h1>
-</div><br>
-<div>
-    <form action="/action_page.php">
+    <div>
+        <form method="post">
+            <table>
+                <tr>
+                    <td>Code</td>
+                    <td>
+                        <input type="text" name="Code" value="@Model.Code">
+                    </td>
+                </tr>
 
-        <label for="fname">Code:</label>
-        <input type="text" id="fname" name="code" placeholder="Code..">
+                <tr>
+                    <td>Name</td>
+                    <td>
+                        <input type="text" name="Name" value="@Model.Name">
+                    </td>
+                </tr>
 
-        <label for="name">Name</label>
-        <input type="text" id="name" name="name" placeholder="Name..">
+                <tr>
+                    <td>Catagory</td>
+                    <td>
+                        <input type="text" name="Catagory" value="@Model.Catagory">
+                    </td>
+                </tr>
 
-        <label for="fname">CatalogName:</label>
-        <input type="text" id="fname" name="catalogName" placeholder="Catalog Name..">
+                <tr>
+                    <td>ReorderLevel</td>
+                    <td>
+                        <input type="text" name="ReorderLevel" value="@Model.ReorderLevel">
+                    </td>
+                </tr>
 
-        <label for="fname">ReorderLevel:</label>
-        <input type="text" id="fname" name="reorderLevel" placeholder="Reorder Level..">
+                <tr>
+                    <td>Description</td>
+                    <td>
+                        <input type="text" name="Description" value="@Model.Description">
+                    </td>
+                </tr>
 
-        <label for="fname">Description:</label>
-        <input type="text" id="fname" name="description" placeholder="Description..">
-
-
-        <input type="submit" value="Delete">
-    </form>
-</div><br>
-<fieldset></fieldset>
-<div id="footer" class="row">
-</div>
-<script src="~/Scripts/jquery-3.0.0.min.js"></script>
-<script src="~/Scripts/popper.min.js"></script>
+                <tr>
+                    <td>Action</td>
+                    <td>
+                        <input type="submit" value="Delete">
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </div>
 </body>
 </html>
+

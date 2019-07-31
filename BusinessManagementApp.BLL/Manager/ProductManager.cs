@@ -16,25 +16,27 @@ namespace BusinessManagementApp.BLL.Manager
         {
             return _productRepository.Add(product);
         }
-
-        public bool Edit(Product product)
-        {
-            return _productRepository.Edit(product);
-        }
-
-        public List<Product> GetAll()
-        {
-            return _productRepository.GetAll();
-        }
-
-        public Product GetById(Product product)
-        {
-            return _productRepository.GetById(product);
-        }
-
         public bool Delete(Product product)
         {
             return _productRepository.Delete(product);
         }
+        public bool Update(Product product)
+        {
+            return _productRepository.Update(product);
+        }
+
+        public bool Show(Product product)
+        {
+            return _productRepository.Show(product);
+        }
+        public List<Product> GetAll()
+        {
+            return _productRepository.GetAll();
+        }
+        public Product GetByID(Product product)
+        {
+            return _productRepository.GetByID(product);
+        }
+
     }
 }

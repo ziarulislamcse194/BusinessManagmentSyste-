@@ -17,25 +17,26 @@ namespace BusinessManagementApp.BLL.Manager
         {
             return _supplierRepository.Add(supplier);
         }
-
-        public bool Edit(Supplier supplier)
+        public bool Delete(Supplier supplier)
         {
-            return _supplierRepository.Edit(supplier);
+            return _supplierRepository.Delete(supplier);
+        }
+        public bool Update(Supplier supplier)
+        {
+            return _supplierRepository.Update(supplier);
         }
 
+        public bool Show(Supplier supplier)
+        {
+            return _supplierRepository.Show(supplier);
+        }
         public List<Supplier> GetAll()
         {
             return _supplierRepository.GetAll();
         }
-
-        public Supplier GetById(Supplier supplier)
+        public Supplier GetByID(Supplier supplier)
         {
-            return _supplierRepository.GetById(supplier);
-        }
-
-        public bool Delete(Supplier supplier)
-        {
-            return _supplierRepository.Delete(supplier);
+            return _supplierRepository.GetByID(supplier);
         }
 
     }

@@ -37,5 +37,9 @@ namespace BusinessManagementApp.BLL.Manager
             return _customerRepository.Delete(customer);
         }
 
+        public bool Show(Customer customer)
+        {
+            return _customerRepository.Show(customer);
+        }
     }
 }
